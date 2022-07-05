@@ -1,23 +1,19 @@
-//
-// Created by Cmf on 2022/6/14.
-//
-
-#ifndef THEDATASTRUCTURE_VECTOR_H
-#define THEDATASTRUCTURE_VECTOR_H
+#pragma once
+#include <utility>
 
 template <typename T>
 class Vector
 {
 public:
     Vector() noexcept = default;
-    explicit Vector(size_t n) : cap_{n}, ptr_{alloc(cap_)}
+    explicit Vector(std::size_t n) : cap_{n}, ptr_{alloc(cap_)}
     {
         for (; len_ < n; ++len_)
         {
             construct(ptr_ + len_); //调用T的默认构造
         }
     }
-    Vector(size_t n, const T &x) : cap_{n}, ptr_{alloc(cap_)}
+    Vector(std::size_t n, const T &x) : cap_{n}, ptr_{alloc(cap_)}
     {
         for (; len_ < n; ++len_)
         {
@@ -102,9 +98,9 @@ public:
     {
         if (len_ == cap_)
         {
-            size_t new_cap = cap_ ? cap_ * 2 : 1; //等0返回1
+            std::size_t new_cap = cap_ ? cap_ * 2 : 1; //等0返回1
             T *new_ptr = alloc(new_cap);
-            for (size_t new_len; new_len < len_; ++new_len)
+            for (std::size_t new_len; new_len < len_; ++new_len)
             {
                 construct(new_ptr + new_len, std::move_if_noexcept(ptr_[new_len]));
             }
@@ -118,9 +114,9 @@ public:
     {
         if (len_ < cap_ / 2)
         {
-            size_t new_cap = cap_ / 2;
+            std::size_t new_cap = cap_ / 2;
             T *new_ptr = alloc(new_cap);
-            for (size_t new_len = 0; new_len < len_; ++new_len)
+            for (std::size_t new_len = 0; new_len < len_; ++new_len)
             {
                 construct(new_ptr + new_len, std::move_if_noexcept(ptr_[new_len]));
             }
@@ -130,11 +126,11 @@ public:
         destroy(ptr_ + len_ - 1);
         --len_;
     }
-    size_t size() const noexcept
+    std::size_t size() const noexcept
     {
         return len_;
     }
-    size_t capacity() const noexcept
+    std::size_t capacity() const noexcept
     {
         return cap_;
     }
@@ -143,11 +139,11 @@ public:
         return len_ == 0;
     }
 
-    T &operator[](size_t i)
+    T &operator[](std::size_t i)
     {
         return ptr_[i];
     }
-    const T &operator[](size_t i) const
+    const T &operator[](std::size_t i) const
     {
         return ptr_[i];
     }
@@ -170,7 +166,7 @@ public:
     }
 
 private:
-    T *alloc(size_t n) //分配n个大小内存
+    T *alloc(std::size_t n) //分配n个大小内存
     {
         return static_cast<T *>(::operator new(sizeof(T) * n));
     }
@@ -189,9 +185,7 @@ private:
     }
 
 private:
-    size_t cap_{0}; //容量
-    size_t len_{0}; //元素个数
+    std::size_t cap_{0}; //容量
+    std::size_t len_{0}; //元素个数
     T *ptr_{nullptr};
 };
-
-#endif //THEDATASTRUCTURE_VECTOR_H
