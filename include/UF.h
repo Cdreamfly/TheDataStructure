@@ -7,4 +7,6 @@ private:
     virtual bool isConnected(int p, int q) = 0;
 
     virtual void unionElements(int p, int q) = 0;
+
+    virtual ~UF() {}
 };
