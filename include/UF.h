@@ -1,7 +1,7 @@
 #pragma once
 
 class UF {
-private:
+public:
     virtual const int getSize() const noexcept = 0;
 
     virtual bool isConnected(int p, int q) = 0;
