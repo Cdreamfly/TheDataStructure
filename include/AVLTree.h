@@ -13,12 +13,7 @@ private:
         Node *right;
         int height;
 
-        Node(Key key, Value value) {
-            this->key = key;
-            this->value = value;
-            this->left = this->right = nullptr;
-            height = 1;
-        }
+        Node(Key key, Value value) : key(key), value(value), left(nullptr), right(nullptr), height(1) {}
 
         Node(Node *node) {
             this->key = node->key;
@@ -47,21 +42,21 @@ public:
     int isEmpty() const noexcept {
         return size == 0;
     }
-
+    //返回节点高度
     int getHeight(const Node *const node) const noexcept {
         if (node == nullptr) {
             return 0;
         }
         return node->height;
     }
-
+    //返回平衡因子
     int getBalanceFactor(const Node *const node) const noexcept {
         if (node == nullptr) {
             return 0;
         }
         return getHeight(node->left) - getHeight(node->right);
     }
-
+    //判断是否是二叉搜索树
     bool isBST() {
         std::vector<Key> keys;
         inOrder(root, keys);
@@ -72,7 +67,7 @@ public:
         }
         return true;
     }
-
+    //判断是否平衡
     bool isBalanced() const {
         return isBalanced(root);
     }
@@ -143,7 +138,6 @@ private:
             node->right = rightRotate(node->right);
             return leftRotate(node);
         }
-
         return node;
     }
 

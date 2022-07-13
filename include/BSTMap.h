@@ -49,10 +49,10 @@ public:
         root = add(root, key, value);
     }
 
-    V get(K key) {
+    V *get(K key) {
         BSTNode<K, V> *node = getNode(root, key);
         if(node!= nullptr){
-            return node->value;
+            return &(node->value);
         }
     }
 
