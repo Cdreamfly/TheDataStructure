@@ -4,6 +4,7 @@
 #pragma once
 
 #include <cassert>
+#include <iostream>
 #include <functional>
 
 template<typename T>

@@ -8,7 +8,7 @@ using namespace std;
 // 因此, 在一些语言中, 三路快排是默认的语言库函数中使用的排序算法。比如Java:)
 int main() {
 
-    int n = 1000000;
+    int n = 200000;
 
     // 测试1 一般性测试
     cout<<"Test for random array, size = "<<n<<", random range [0, "<<n<<"]"<<endl;
@@ -17,7 +17,7 @@ int main() {
     int* arr3 = SortTestHelper::copyIntArray(arr1,n);
 
     SortTestHelper::testSort("Merge Sort", Sort::mergeSort, arr1, n);
-    SortTestHelper::testSort("Quick Sort", Sort::quickSort, arr2, n);
+    SortTestHelper::testSort("heapSort Sort", Sort::heapSort, arr2, n);
     SortTestHelper::testSort("Quick Sort 3 Ways", Sort::quickSort3Ways, arr3, n);
 
     delete[] arr1;
@@ -35,7 +35,7 @@ int main() {
     arr3 = SortTestHelper::copyIntArray(arr1, n);
 
     SortTestHelper::testSort("Merge Sort", Sort::mergeSort, arr1, n);
-    SortTestHelper::testSort("Quick Sort", Sort::quickSort, arr2, n);
+    SortTestHelper::testSort("heapSort Sort", Sort::heapSort, arr2, n);
     SortTestHelper::testSort("Quick Sort 3 Ways", Sort::quickSort3Ways, arr3, n);
 
     delete[] arr1;
@@ -52,7 +52,7 @@ int main() {
     arr3 = SortTestHelper::copyIntArray(arr1, n);
 
     SortTestHelper::testSort("Merge Sort", Sort::mergeSort, arr1, n);
-    SortTestHelper::testSort("Quick Sort", Sort::quickSort, arr2, n);
+    SortTestHelper::testSort("heapSort Sort", Sort::heapSort, arr2, n);
     SortTestHelper::testSort("Quick Sort 3 Ways", Sort::quickSort3Ways, arr3, n);
 
     delete[] arr1;

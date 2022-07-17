@@ -7,6 +7,9 @@
 template<typename T>
 class Array {
 public:
+    class Range {
+    };
+
     //无参构造
     Array() : size(0), capacity(10) {
         data = new T[10];
@@ -15,6 +18,12 @@ public:
     //有参构造
     Array(const int Capacity) : size(0), capacity(Capacity) {
         data = new T[capacity];
+    }
+
+    Array(T arr[], int n) : data(new T[n]), size(n), capacity(n) {
+        for (int i = 0; i < n; ++i) {
+            data[i] = arr[i];
+        }
     }
 
     //返回当已用容量
@@ -153,6 +162,15 @@ public:
         }
         std::cout << "]";
         std::cout << std::endl;
+    }
+
+    void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw Range();
+        }
+        T t = data[i];
+        data[i] = data[j];
+        data[j] = t;
     }
 
 private:
