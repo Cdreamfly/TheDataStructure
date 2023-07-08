@@ -81,7 +81,7 @@ public:
     bool contains(const T &e) const {
         Node<T> *cur = head->next;
         while (cur != nullptr) {
-            if (cur->e = e) {
+            if (cur->e == e) {
                 return true;
             }
             cur = cur->next;
