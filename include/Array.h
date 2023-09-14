@@ -96,17 +96,17 @@ namespace cm {
 		}
 
 		//删除第一个元素
-		T removeFirst() {
+		constexpr T removeFirst() {
 			return remove(0);
 		}
 
 		//删除最后一个元素
-		T removeLast() {
+		constexpr T removeLast() {
 			return remove(size - 1);
 		}
 
 		//删除数组中元素e
-		int removeElement(const T &e) {
+		constexpr int removeElement(const T &e) {
 			int index = find(e);
 			if (index != -1) {
 				return remove(index);
@@ -115,7 +115,7 @@ namespace cm {
 		}
 
 		//删除index位置的元素
-		T remove(const int index) {
+		constexpr T remove(const int index) {
 			assert(index >= 0 && index <= size);
 			int ret = data[index];
 			for (int i = index + 1; i < size; ++i) {
@@ -144,17 +144,18 @@ namespace cm {
 			data = nullptr;
 		}
 
-		void print() {
-			std::cout << "Array: size = " << size << ", capacity = " << getCapacity() << std::endl;
-			std::cout << "[";
-			for (int i = 0; i < size; ++i) {
-				std::cout << data[i];
-				if (i != size - 1) {
-					std::cout << ",";
+		friend std::ostream &operator<<(std::ostream &stream, const Array &arr) {
+			stream << "Array: size = " << arr.size << ", capacity = " << arr.getCapacity() << std::endl;
+			stream << "[";
+			for (int i = 0; i < arr.size; ++i) {
+				stream << arr.data[i];
+				if (i != arr.size - 1) {
+					stream << ",";
 				}
 			}
-			std::cout << "]";
-			std::cout << std::endl;
+			stream << "]";
+			stream << std::endl;
+			return stream;
 		}
 
 		void swap(const int i, const int j) {

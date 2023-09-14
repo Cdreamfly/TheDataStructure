@@ -1,13 +1,14 @@
 #include "test/sortTest.h"
 #include "test/arrayTest.h"
 #include <array>
-
-void test(std::size_t a){
-	std::cout<<a<<std::endl;
-}
+#include "test/arrayQueue.h"
+#include "test/arrayStack.h"
 
 int main() {
-	arrayTest();
+
+	arrayStack();
+	//test();
+	//arrayTest();
 
 	return 0;
 }

@@ -95,12 +95,12 @@ public:
 
     T remove(int index) {
         assert(index >= 0 && index < size);
-        ListNode<T> *prve = dummyHead;
+        ListNode<T> *prev = dummyHead;
         for (int i = 0; i < index; ++i) {
-            prve = prve->next;
+	        prev = prev->next;
         }
-        ListNode<T> *retListNode = prve->next;
-        prve->next = retListNode->next;
+        ListNode<T> *retListNode = prev->next;
+	    prev->next = retListNode->next;
         retListNode->next = nullptr;
         --size;
         T temp = retListNode->e;
