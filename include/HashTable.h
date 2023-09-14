@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RBTree.h"
+#include <hash_map>
 
 template<typename Key, typename Value>
 class HashTable {

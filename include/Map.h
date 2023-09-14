@@ -17,5 +17,5 @@ public:
 
     virtual V *remove(K key) = 0;
 
-    virtual ~Map() {}
+    virtual ~Map() = default;
 };

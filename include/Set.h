@@ -13,5 +13,5 @@ public:
 
     virtual constexpr int getSize() = 0;
 
-    virtual ~Set() {}
+    virtual ~Set() = default;
 };
